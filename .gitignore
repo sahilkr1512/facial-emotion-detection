@@ -35,3 +35,6 @@ project report.docx
 
 # Extracted FER2013 image dataset
 facial_emotion_detection_web_app/data/archive/
+
+# Processed training data
+facial_emotion_detection_web_app/data/processed/
