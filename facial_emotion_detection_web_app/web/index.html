@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Facial Emotion Detection</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- TensorFlow.js: runs the converted Keras (.h5 -> tfjs) model in the browser -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <!-- face-api.js: in-browser face detection (replaces the Python Haar cascade) -->
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Real-Time Facial Emotion Detection</h1>
+      <p class="subtitle">Runs entirely in your browser &mdash; no video ever leaves your device.</p>
+    </header>
+
+    <main class="app-main">
+      <section class="video-panel">
+        <div class="video-wrapper">
+          <video id="webcam" autoplay muted playsinline></video>
+          <canvas id="overlay"></canvas>
+          <div id="status-badge" class="status-badge status-idle">Idle</div>
+        </div>
+
+        <div class="controls">
+          <button id="start-btn" class="btn btn-primary">Start Camera</button>
+          <button id="stop-btn" class="btn btn-secondary" disabled>Stop Camera</button>
+        </div>
+
+        <p id="error-msg" class="error-msg" hidden></p>
+      </section>
+
+      <aside class="sidebar">
+        <h2>Ethical Notes</h2>
+        <ul>
+          <li>Not a validated psychology or medical tool</li>
+          <li>Demo-scale accuracy only; real FER2013 models run ~65&ndash;70%</li>
+          <li>May carry bias across skin tone, age, and lighting &mdash; not evaluated here</li>
+          <li>No frames are stored or uploaded; all processing is local, in-browser</li>
+          <li>For educational/entertainment use only</li>
+        </ul>
+
+        <h2>Setup</h2>
+        <p class="setup-note">
+          This page expects a TensorFlow.js model at
+          <code>models/emotion_model/model.json</code> and face-api.js weights at
+          <code>models/face-api/</code>. See <code>README.md</code> for conversion steps.
+        </p>
+      </aside>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
